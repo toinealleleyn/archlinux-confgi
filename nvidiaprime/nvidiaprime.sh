@@ -17,5 +17,5 @@ sudo cp udev.rules /etc/udev/rules.d/80-nvidia-pm.rules
 #	 for a short period, and powered on if application starts
 #	 using the GPU.
 PMSETTING="0x02"
-echo "options nvidia "NVreg_DynamicPowerManagement=$PMSETTING"" \
-	| sudo tee /etc/modprobe.d/nvidia.conf
+echo "options nvidia \"NVreg_DynamicPowerManagement=$PMSETTING\"" | \
+	sudo tee /etc/modprobe.d/nvidia.conf
