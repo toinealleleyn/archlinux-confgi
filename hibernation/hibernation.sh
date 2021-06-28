@@ -13,16 +13,16 @@ EXTRASWAPSIZE=$(echo "$HIBERNATIONSIZE" | awk '{$1=$1/1024; print ($0-int($0)>0)
 TOTALSWAPSIZE=$(($HIBERNATIONSIZE+$EXTRASWAPSIZE))
 
 # Create swapfile.
-sudo dd if=/dev/zero of=/swapfile bs=1M count=$TOTALSWAPSIZE >/dev/null 2>&1
+# sudo dd if=/dev/zero of=/swapfile bs=1M count=$TOTALSWAPSIZE >/dev/null 2>&1
 
 # Format to swap and activate.
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile >/dev/null 2>&1
-sudo swapon /swapfile >/dev/null 2>&1
+#sudo chmod 600 /swapfile
+#sudo mkswap /swapfile >/dev/null 2>&1
+#sudo swapon /swapfile >/dev/null 2>&1
 
 # Add swapfile to /etc/fstab.
 grep "/swapfile" /etc/fstab >/dev/null 2>&1 || \
-	echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
+	echo "/swapfile\t\tnone\t\tswap\t\tdefaults\t\t0 0" | sudo tee -a /etc/fstab >/dev/null 2>&1
 
 # Configure kernel parameters.
 SWAPDEVICE=$(findmnt -no UUID -T /swapfile)
