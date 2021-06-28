@@ -4,7 +4,7 @@ autoload -U vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}*'
-zstyle ':vcs_info:git:*' stagedstr '%F{green}*'
+zstyle ':vcs_info:git:*' stagedstr '%F{yellow}*'
 zstyle ':vcs_info:git:*' formats ' %F{green}(%b%u%c%F{green})'
 precmd() { vcs_info }
 setopt prompt_subst
