@@ -1,0 +1,31 @@
+# Enable colors, git info and change prompt.
+autoload -U colors && colors
+autoload -U vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:git:*' formats ' %F{green}(%b)'
+precmd() { vcs_info }
+setopt prompt_subst
+PS1='[%{$fg[cyan]%}%n%f@%{$fg[magenta]%}%M %F{8}%~${vcs_info_msg_0_}%f]$ '
+setopt autocd  
+stty stop undef
+setopt interactive_comments
+
+# History in cache directory.
+HISTSIZE=2000
+SAVEHIST=2000
+HISTFILE=~/.cache/zsh/.history
+setopt appendhistory
+
+# Basic auto/tab complete.
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+# Aliases
+alias ls="ls --color=auto"
+alias vim="nvim"
+
+# Syntax highlighting.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

@@ -1,0 +1,2 @@
+# Source .zprofile for X11 sessions
+. ~/.zprofile
