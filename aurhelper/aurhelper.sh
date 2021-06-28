@@ -10,7 +10,7 @@ sudo pacman -S --needed --noconfirm base-devel git >/dev/null 2>&1
 
 # Configure makepkg to use all cores for compilation.
 grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
-sudo sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
+	sudo sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
 
 # Download and build the AUR helper.
 [ -f "/usr/bin/$AURHELPER" ] || (

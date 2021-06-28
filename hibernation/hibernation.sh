@@ -18,11 +18,11 @@ sudo swapon /swapfile >/dev/null 2>&1
 grep "/swapfile" /etc/fstab >/dev/null 2>&1 || \
 	echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
 
-# Configure kernel parameters
+# Configure kernel parameters.
 SWAPDEVICE=$(findmnt -no UUID -T /swapfile)
 SWAPFILEOFFSET=$(sudo filefrag -v /swapfile | awk '{ if($1=="0:"){print substr($4, 1, length($4)-2)} }')
 
-# Manual action to enable hibernation
+# Manual action to enable hibernation.
 echo "Add the following (after the root parameter) to the kernel parameters:"
 echo "'resume=UUID=$SWAPDEVICE resume_offset=$SWAPFILEOFFSET'\n"
 echo "Add 'resume' after filesystem (and lvm2) in /etc/mkinitcpio.conf."
