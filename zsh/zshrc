@@ -29,6 +29,7 @@ _comp_options+=(globdots)
 # Aliases
 alias ls="ls --color=auto"
 alias vim="nvim"
+alias sudo='sudo '
 
 # Syntax highlighting.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
