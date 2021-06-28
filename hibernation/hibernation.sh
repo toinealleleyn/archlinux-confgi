@@ -2,12 +2,18 @@
 
 # Script to enable hibernation using a swapfile.
 
+# Install bc for extra calculations.
+sudo pacman -S --needed --noconfirm bc >/dev/null 2>&1
+
 # Determine size the swapfile needs to be.
-# Rounded up (ceil) to ensure the swapfile is big enough for hibernation.
-SWAPSIZE=$(grep MemTotal /proc/meminfo | awk -F ' ' '{print $2}' | awk '{$1=$1/1024; print ($0-int($0)>0)?int($0)+1:int($0)}')
+# Based on the sum of the total memory and the square root of the total memory.
+HIBERNATIONSIZE=$(grep MemTotal /proc/meminfo | awk -F ' ' '{print $2}' | awk '{$1=$1/1024; print ($0-int($0)>0)?int($0)+1:int($0)}')
+EXTRASWAPSIZE=$(echo "$HIBERNATIONSIZE" | awk '{$1=$1/1024; print ($0-int($0)>0)?int($0)+1:int($0)}' | \
+	(read EXTRASWAPSIZE; echo "scale=3;sqrt($EXTRASWAPSIZE)") | bc | awk '{$1=$1*1024; print ($0-int($0)>0)?int($0)+1:int($0)}')
+TOTALSWAPSIZE=$(($HIBERNATIONSIZE+$EXTRASWAPSIZE))
 
 # Create swapfile.
-sudo dd if=/dev/zero of=/swapfile bs=1M count=$SWAPSIZE >/dev/null 2>&1
+sudo dd if=/dev/zero of=/swapfile bs=1M count=$TOTALSWAPSIZE >/dev/null 2>&1
 
 # Format to swap and activate.
 sudo chmod 600 /swapfile
