@@ -3,7 +3,7 @@
 - https://wiki.archlinux.org/title/PRIME
 
 ## Battery usage:
-On my Dell XPS 9500 (also running `tlp`, `tlp-rdw` and `powertop` (configured with the script in this repo).
+On my Dell XPS 9500 (also running `tlp`, `tlp-rdw` and `powertop` configured with the script in this repo).
 
 ![Screenshot from 2021-06-29 16-38-40](https://user-images.githubusercontent.com/86513427/123817525-87658b00-d8f8-11eb-9039-241031bd525b.png)
 
