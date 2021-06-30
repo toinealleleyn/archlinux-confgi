@@ -8,6 +8,9 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 # Set keyboard layout.
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
 
+# Install CJK fonts (better than looking at squares).
+sudo pacman -S --needed --noconfirm noto-fonts-cjk >/dev/null 2>&1
+
 # Install extensions.
 # Can be enabled after a re-login using gnome-extensions.
 sudo pacman -S --needed --noconfirm gnome-shell-extension-appindicator \
