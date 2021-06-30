@@ -12,6 +12,7 @@ PS1='[%{$fg[cyan]%}%n%f@%{$fg[magenta]%}%M %F{8}%~${vcs_info_msg_0_}%f]$ '
 setopt autocd  
 stty stop undef
 setopt interactive_comments
+unsetopt nomatch
 
 # History in cache directory.
 HISTSIZE=2000
@@ -27,9 +28,10 @@ compinit
 _comp_options+=(globdots)
 
 # Aliases
-alias ls="ls --color=auto"
-alias vim="nvim"
 alias sudo='sudo '
+alias ls="ls --color=auto --group-directories-first"
+alias vim="nvim"
+alias yta="youtube-dl -x -f bestaudio/best"
 
 # Syntax highlighting.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
