@@ -4,7 +4,7 @@
 sudo pacman -S --needed --noconfirm zsh zsh-syntax-highlighting >/dev/null 2>&1
 
 # Install packages used in aliases (to make the script usable standalone).
-sudo pacman -S --needed --noconfirm neovim youtube-dl >/dev/null 2>&1
+sudo pacman -S --needed --noconfirm neovim youtube-dl mpv >/dev/null 2>&1
 
 # Set as default shell.
 sudo chsh -s $(which zsh) $(whoami) >/dev/null 2>&1
