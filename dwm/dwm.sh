@@ -19,6 +19,7 @@ mkdir -p $HOME/.config/picom/
 cp /etc/xdg/picom.conf $HOME/.config/picom/picom.conf
 sed -i 's/^fading = true/fading = false/g' $HOME/.config/picom/picom.conf
 sed -i 's/^shadow = true/shadow = false/g' $HOME/.config/picom/picom.conf
+sed -i 's/ opacity = 0.8/ opacity = 1.0/g' $HOME/.config/picom/picom.conf
 
 # Configure GTK
 mkdir -p $HOME/.config/gtk-3.0/
