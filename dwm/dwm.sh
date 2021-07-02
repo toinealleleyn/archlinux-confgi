@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Add color to pacman.
+sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
+
 # Install required packages.
 sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
 	pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
