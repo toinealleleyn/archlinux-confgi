@@ -8,7 +8,7 @@ sudo timedatectl set-timezone "Europe/Amsterdam"
 
 # Install required packages.
 sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
-	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
+	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts dunst \
 	base-devel git
 
 # Set keyboard layout to US Intl with dead keys.
@@ -20,6 +20,11 @@ cp /etc/xdg/picom.conf $HOME/.config/picom/picom.conf
 sed -i 's/^fading = true/fading = false/g' $HOME/.config/picom/picom.conf
 sed -i 's/^shadow = true/shadow = false/g' $HOME/.config/picom/picom.conf
 sed -i 's/ opacity = 0.8/ opacity = 1.0/g' $HOME/.config/picom/picom.conf
+
+# Configure dunst
+mkdir -p $HOME/.config/dunst/
+cp /etc/dunst/dunstrc $HOME/.config/dunst/dunstrc
+sed -i 's/Monospace 8/Monospace 10/g' $HOME/.config/dunst/dunstrc
 
 # Configure GTK
 mkdir -p $HOME/.config/gtk-3.0/
@@ -92,11 +97,14 @@ Section "InputClass"
 	Option "ScrollPixelDistance" "30"
 EndSection
 EOF
- 
+
+# Configure wallpapers
+feh --bg-scale wallpaper.png >/dev/null 2>&1
+
 # Configure .xinitrc
 tee $HOME/.xinitrc << EOF
 picom &
-nitrogen --restore &
+~/.fehbg &
 dunst &
 xset s 300 &
 xautolock -time 5 -locker "slock" -detectsleep -killtime 10 -killer "systemctl suspend" &
