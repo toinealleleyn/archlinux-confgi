@@ -28,6 +28,9 @@ gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita-dark
 EOF
 
+# Set cursor theme to X11 default (i like it)
+sudo sed -i 's/Inherits=Adwaita/Inherits=""/g' /usr/share/icons/default/index.theme
+
 # Create statusbar
 mkdir -p $HOME/.scripts/
 [ -f /sys/class/power_supply/BAT0/capacity ] || tee $HOME/.scripts/statusbar.sh << EOF
