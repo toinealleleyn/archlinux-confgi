@@ -4,7 +4,7 @@
 # This will install the closed-source NVIDIA drivers.
 
 # Install required packages.
-sudo pacman -S --needed --noconfirm nvidia nvidia-prime
+sudo pacman -S --needed --noconfirm xf86-video-intel nvidia nvidia-prime
 	
 # Create udev rules.
 sudo cp udev.rules /etc/udev/rules.d/80-nvidia-pm.rules

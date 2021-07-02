@@ -3,6 +3,9 @@
 # Add color to pacman.
 sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
 
+# Set keyboard layout to US Intl with dead keys.
+sudo localectl set-x11-keymap us "" intl
+
 # Install required packages.
 sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
 	pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
@@ -39,6 +42,7 @@ while true; do
 	sleep 1m
 done
 EOF
+chmod +x $HOME/.scripts/statusbar.sh
 
 # Configure audio and backlight keybinds
 tee $HOME/.xbindkeysrc << EOF
