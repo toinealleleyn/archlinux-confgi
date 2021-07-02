@@ -8,7 +8,7 @@ sudo localectl set-x11-keymap us "" intl
 
 # Install required packages.
 sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
-	pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
+	xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
 	base-devel git
 
 # Configure picom
@@ -70,6 +70,20 @@ tee $HOME/.xbindkeysrc << EOF
 # Decrease backlight
 "xbacklight -dec 10"
    XF86MonBrightnessDown
+EOF
+
+sudo tee /etc/X11/xorg.conf.d/30-touchpad.conf << EOF
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+	Option "Tapping" "on"
+	Option "ClickMethod" "clickfinger"
+	Option "NaturalScrolling" "true"
+	Option "ScrollMethod" "twofinger"
+	Option "ScrollPixelDistance" "30"
+EndSection
 EOF
  
 # Configure .xinitrc
