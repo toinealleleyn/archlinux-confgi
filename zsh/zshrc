@@ -32,7 +32,7 @@ alias sudo='sudo '
 alias ls="ls --color=auto --group-directories-first"
 alias vim="nvim"
 alias yta="youtube-dl -x -f bestaudio/best"
-alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
+alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed >/dev/null 2&>1&"
 
 # Syntax highlighting.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
