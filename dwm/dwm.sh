@@ -76,11 +76,11 @@ tee $HOME/.xbindkeysrc << EOF
 ## Backlight
 
 # Increase backlight
-"xbacklight -inc 10"
+"xbacklight -inc 1"
    XF86MonBrightnessUp
 
 # Decrease backlight
-"xbacklight -dec 10"
+"xbacklight -dec 1"
    XF86MonBrightnessDown
 EOF
 
