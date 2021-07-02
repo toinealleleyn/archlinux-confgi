@@ -7,6 +7,7 @@ The scripts assume my personal clean install of Arch Linux, so use at your own r
 
 - `aurhelper.sh`: install an AUR helper (default: paru)
 - `dash.sh`: install dash and configure as /bin/sh, including pacman hook
+- `dwm.sh`: dirty script to install and configure my build of dwm, st, dmenu and slock
 - `gnome.sh`: minimal gnome tweaks so it is usable for me
 - `hibernation.sh`: configures system hibernation
 - `nvidiaprime.sh`: enables NVIDIA PRIME including RTD3 Power Management
