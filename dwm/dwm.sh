@@ -3,13 +3,16 @@
 # Add color to pacman.
 sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
 
-# Set keyboard layout to US Intl with dead keys.
-sudo localectl set-x11-keymap us "" intl
+# Set timezone.
+sudo timedatectl set-timezone "Europe/Amsterdam"
 
 # Install required packages.
 sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
-	xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
+	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom nitrogen adobe-source-code-pro-fonts dunst \
 	base-devel git
+
+# Set keyboard layout to US Intl with dead keys.
+sudo localectl set-x11-keymap us "" intl
 
 # Configure picom
 mkdir -p $HOME/.config/picom/
