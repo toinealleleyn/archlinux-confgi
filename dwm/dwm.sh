@@ -7,9 +7,32 @@ sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
 sudo timedatectl set-timezone "Europe/Amsterdam"
 
 # Install required packages.
-sudo pacman -S --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
+sudo pacman -S --noconfirm --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
 	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts dunst \
 	base-devel git
+
+# Download and install an AUR helper.
+# Default: paru. Change variable AURHELPER for a different helper. 
+AURHELPER="paru"
+AURURL="https://aur.archlinux.org/cgit/aur.git/snapshot/$AURHELPER.tar.gz"
+
+# Configure makepkg to use all cores for compilation.
+grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
+	sudo sed -i "s/-j2/-j$(nproc)/;s/^#MAKEFLAGS/MAKEFLAGS/" /etc/makepkg.conf
+
+# Download and build the AUR helper.
+[ -f "/usr/bin/$AURHELPER" ] || (
+	cd /tmp || exit 1
+	rm -rf /tmp/"$AURHELPER"*
+	curl -sO "$AURURL" &&
+	tar -xvf "$AURHELPER".tar.gz >/dev/null 2>&1 &&
+	cd "$AURHELPER" &&
+	makepkg --noconfirm -si || echo "Failed."
+	cd /tmp
+	rm -rf /tmp/"$AURHELPER"* )
+
+# Install symbols
+paru -S --needed --noconfirm ttf-symbola
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
@@ -76,11 +99,11 @@ tee $HOME/.xbindkeysrc << EOF
 ## Backlight
 
 # Increase backlight
-"xbacklight -inc 1"
+"xbacklight -inc 5"
    XF86MonBrightnessUp
 
 # Decrease backlight
-"xbacklight -dec 1"
+"xbacklight -dec 5"
    XF86MonBrightnessDown
 EOF
 
