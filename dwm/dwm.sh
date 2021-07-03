@@ -9,7 +9,7 @@ sudo timedatectl set-timezone "Europe/Amsterdam"
 # Install required packages.
 sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
 	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts ttf-joypixels dunst \
-	base-devel git
+	pamixer base-devel git
 
 # Download and install an AUR helper.
 # Default: paru. Change variable AURHELPER for a different helper. 
@@ -65,16 +65,18 @@ sudo sed -i 's/Inherits=Adwaita/Inherits=""/g' /usr/share/icons/default/index.th
 mkdir -p $HOME/.scripts/
 [ -f /sys/class/power_supply/BAT0/capacity ] || tee $HOME/.scripts/statusbar.sh << EOF
 while true; do
-	TIMEDATE=$(date +"📅 %d-%m | 🕒 %H:%M")
-	xsetroot -name " \$TIMEDATE"
-	sleep 1m
+        DATE=$(date +"%d-%m")
+        TIME=$(date +"%H:%M")
+        xsetroot -name " 📅 $DATE | 🕒 $TIME"
+        sleep 1m
 done
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
 while true; do
-        TIMEDATE=$(date +"📅 %d-%m | 🕒 %H:%M")
-        BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
-        xsetroot -name " 🔋$BATTERY% | $TIMEDATE"
+        DATE=$(date +"%d-%m")
+        TIME=$(date +"%H:%M")
+        BATTERY=$(cat /sys/class/power_supply/BAT0/capacity))
+        xsetroot -name " 🔋$BATTERY% | 📅 $DATE | 🕒 $TIME"
         sleep 1m
 done
 EOF
