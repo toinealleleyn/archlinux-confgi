@@ -31,8 +31,9 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 	cd /tmp
 	rm -rf /tmp/"$AURHELPER"* )
 
-# Install symbols
-paru -S --needed --noconfirm libxft-bgra ttf-symbola
+# Install symbols and patched libxft for color emoji support.
+# Needs to be manually accepted because of conflicts.
+paru -S --needed libxft-bgra ttf-symbola
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
@@ -64,17 +65,17 @@ sudo sed -i 's/Inherits=Adwaita/Inherits=""/g' /usr/share/icons/default/index.th
 mkdir -p $HOME/.scripts/
 [ -f /sys/class/power_supply/BAT0/capacity ] || tee $HOME/.scripts/statusbar.sh << EOF
 while true; do
-	TIMEDATE=\$(date +"%d-%m | %H:%M")
-	xsetroot -name "\$TIMEDATE"
+	TIMEDATE=$(date +"📅 %d-%m | 🕒 %H:%M")
+	xsetroot -name " \$TIMEDATE"
 	sleep 1m
 done
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
 while true; do
-	TIMEDATE=\$(date +"%d-%m | %H:%M")
-	BATTERY=\$(cat /sys/class/power_supply/BAT0/capacity)
-	xsetroot -name "\$BATTERY% | \$TIMEDATE"
-	sleep 1m
+        TIMEDATE=$(date +"📅 %d-%m | 🕒 %H:%M")
+        BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
+        xsetroot -name " 🔋$BATTERY% | $TIMEDATE"
+        sleep 1m
 done
 EOF
 chmod +x $HOME/.scripts/statusbar.sh
@@ -120,9 +121,6 @@ Section "InputClass"
 	Option "ScrollPixelDistance" "30"
 EndSection
 EOF
-
-# Configure wallpapers
-feh --bg-scale wallpaper.png >/dev/null 2>&1
 
 # Configure .xinitrc
 tee $HOME/.xinitrc << EOF
