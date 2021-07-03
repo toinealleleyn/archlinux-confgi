@@ -7,8 +7,8 @@ sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
 sudo timedatectl set-timezone "Europe/Amsterdam"
 
 # Install required packages.
-sudo pacman -S --noconfirm --needed libx11 libxft libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
-	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts dunst \
+sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
+	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts ttf-joypixels dunst \
 	base-devel git
 
 # Download and install an AUR helper.
@@ -32,7 +32,7 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 	rm -rf /tmp/"$AURHELPER"* )
 
 # Install symbols
-paru -S --needed --noconfirm ttf-symbola
+paru -S --needed --noconfirm libxft-bgra ttf-symbola
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
@@ -139,7 +139,7 @@ EOF
 # Get dwm, st, dmenu and slock
 mkdir $HOME/.src/
 cd $HOME/.src/
-git clone https://git.suckless.org/dmenu &&
+git clone https://github.com/toinealleleyn/dmenu &&
 	cd $HOME/.src/dmenu &&
 	make &&
 	sudo make install
