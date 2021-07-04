@@ -64,21 +64,28 @@ sudo sed -i 's/Inherits=Adwaita/Inherits=""/g' /usr/share/icons/default/index.th
 # Create statusbar
 mkdir -p $HOME/.scripts/
 [ -f /sys/class/power_supply/BAT0/capacity ] || tee $HOME/.scripts/statusbar.sh << EOF
-while true; do
-        DATE=$(date +"%d-%m")
-        TIME=$(date +"%H:%M")
-        xsetroot -name " 📅 $DATE | 🕒 $TIME"
-        sleep 1m
-done
+DATE=\$(date +"%d-%m")
+TIME=\$(date +"%H:%M")
+VOLUME=\$(pamixer --get-volume-human)
+if [ \$VOLUME == "muted" ]; then
+        VOLUMEICON="🔈"
+else
+        VOLUMEICON="🔊"
+fi
+xsetroot -name " \$VOLUMEICON \$VOLUME | 📅 \$DATE | 🕒 \$TIME"
+
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
-while true; do
-        DATE=$(date +"%d-%m")
-        TIME=$(date +"%H:%M")
-        BATTERY=$(cat /sys/class/power_supply/BAT0/capacity))
-        xsetroot -name " 🔋$BATTERY% | 📅 $DATE | 🕒 $TIME"
-        sleep 1m
-done
+DATE=\$(date +"%d-%m")
+TIME=\$(date +"%H:%M")
+VOLUME=\$(pamixer --get-volume-human)
+if [ \$VOLUME == "muted" ]; then
+        VOLUMEICON="🔈"
+else
+        VOLUMEICON="🔊"
+fi
+BATTERY=\$(cat /sys/class/power_supply/BAT0/capacity)
+xsetroot -name " 🔋 \$BATTERY% | \$VOLUMEICON \$VOLUME | 📅 \$DATE | 🕒 \$TIME"
 EOF
 chmod +x $HOME/.scripts/statusbar.sh
 
@@ -87,15 +94,15 @@ tee $HOME/.xbindkeysrc << EOF
 ## Audio
 
 # Increase volume
-"pactl set-sink-volume @DEFAULT_SINK@ +1000"
+"pactl set-sink-volume @DEFAULT_SINK@ +1000 && \$HOME/.scripts/statusbar.sh"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"pactl set-sink-volume @DEFAULT_SINK@ -1000"
+"pactl set-sink-volume @DEFAULT_SINK@ -1000 && \$HOME/.scripts/statusbar.sh"
    XF86AudioLowerVolume
 
 # Mute volume
-"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+"pactl set-sink-mute @DEFAULT_SINK@ toggle && \$HOME/.scripts/statusbar.sh"
    XF86AudioMute
 
 
@@ -126,14 +133,33 @@ EOF
 
 # Configure .xinitrc
 tee $HOME/.xinitrc << EOF
+# Compositor
 picom &
-~/.fehbg &
+
+# Restore background
+\$HOME/.fehbg &
+
+# Notifications
 dunst &
+
+# Screen power management
 xset s 300 &
+
+# Screen locking
 xautolock -time 5 -locker "slock" -detectsleep -killtime 10 -killer "systemctl suspend" &
+
+# Load keybindings
 xbindkeys &
-$HOME/.scripts/statusbar.sh &
+
+# Set statusbar
+while true; do
+        \$HOME/.scripts/statusbar.sh
+        sleep 1m
+done &
+
+# Launch dwm
 exec dwm
+
 EOF
 
 # Get dwm, st, dmenu and slock
