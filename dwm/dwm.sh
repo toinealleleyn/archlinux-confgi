@@ -48,7 +48,7 @@ sed -i 's/ opacity = 0.8/ opacity = 1.0/g' $HOME/.config/picom/picom.conf
 # Configure dunst
 mkdir -p $HOME/.config/dunst/
 cp /etc/dunst/dunstrc $HOME/.config/dunst/dunstrc
-sed -i 's/Monospace 8/Monospace 10/g' $HOME/.config/dunst/dunstrc
+sed -i 's/Monospace 8/Source Code Pro 10/g' $HOME/.config/dunst/dunstrc
 
 # Configure GTK
 mkdir -p $HOME/.config/gtk-3.0/
