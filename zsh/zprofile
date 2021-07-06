@@ -2,5 +2,6 @@
 
 # profile file. Runs on login. Environment variables are set here.
 
-export EDITOR="nvim"
 export ZDOTDIR="$HOME/.config/zsh"
+export EDITOR="nvim"
+export BROWSER="brave"

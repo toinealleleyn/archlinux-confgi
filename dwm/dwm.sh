@@ -7,9 +7,9 @@ sudo sed -i 's/^#Color/Color/g' /etc/pacman.conf
 sudo timedatectl set-timezone "Europe/Amsterdam"
 
 # Install required packages.
-sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr xbindkeys xorg-xbacklight \
-	libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra picom feh adobe-source-code-pro-fonts ttf-joypixels dunst \
-	pamixer base-devel git
+sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr \
+	xbindkeys xorg-xbacklight libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra \
+	picom feh adobe-source-code-pro-fonts ttf-joypixels dunst pamixer base-devel git
 
 # Download and install an AUR helper.
 # Default: paru. Change variable AURHELPER for a different helper. 
