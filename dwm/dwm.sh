@@ -163,6 +163,14 @@ exec dwm
 
 EOF
 
+# Configure wallpaper
+sudo mkdir -p /usr/share/backgrounds/
+sudo cp buildings.jpg /usr/share/backgrounds/
+tee $HOME/.fehbg << EOF
+#!/bin/sh
+feh --no-fehbg --bg-scale '/usr/share/backgrounds/buildings.jpg'
+EOF
+
 # Get dwm, st, dmenu and slock
 mkdir $HOME/.src/
 cd $HOME/.src/
