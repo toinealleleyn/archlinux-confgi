@@ -45,6 +45,7 @@ sed -i 's/^fading = true/fading = false/g' $HOME/.config/picom/picom.conf
 sed -i 's/^shadow = true/shadow = false/g' $HOME/.config/picom/picom.conf
 sed -i 's/ opacity = 0.8/ opacity = 1.0/g' $HOME/.config/picom/picom.conf
 sed -i 's/ opacity = 0.75/ opacity = 1.0/g' $HOME/.config/picom/picom.conf
+sed -i 's/^frame-opacity = 0.7/frame-opacity = 1.0/g' $HOME/.config/picom/picom.conf
 
 # Configure dunst
 mkdir -p $HOME/.config/dunst/
