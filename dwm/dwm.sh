@@ -58,7 +58,7 @@ tee $HOME/.config/gtk-3.0/settings.ini << EOF
 [Settings]
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita-dark
-gtk-theme-name = Fira Code 10
+gtk-font-name = Fira Code 10
 EOF
 
 # Set cursor theme to X11 default (i like it)
