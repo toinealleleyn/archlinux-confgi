@@ -1,4 +1,4 @@
 auto-reload yes
 browser "$BROWSER %u"
 macro m set browser "mpv %u &"; open-in-browser; set browser "$BROWSER %u"
-macro a set browser "notify-send \"🎵 $(youtube-dl --skip-download --get-title %u)\"; st -c \"st_float\" -g \"50x3-2-2\" mpv --no-video %u &"; open-in-browser; set browser "$BROWSER %u"
+macro a set browser "notify-send \"🎵 $(youtube-dl --skip-download --get-title %u)\"; st -c \"st_float\" -g \"50x3-2-2\" mpv --no-video --keep-open=no %u &"; open-in-browser; set browser "$BROWSER %u"
