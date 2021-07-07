@@ -51,6 +51,9 @@ sed -i 's/^frame-opacity = 0.7/frame-opacity = 1.0/g' $HOME/.config/picom/picom.
 mkdir -p $HOME/.config/dunst/
 cp /etc/dunst/dunstrc $HOME/.config/dunst/dunstrc
 sed -i 's/Monospace 8/Fira Code 10/g' $HOME/.config/dunst/dunstrc
+sed -i 's/geometry = "300x5-30+20"/geometry = "300x5-5+25"/g' $HOME/.config/dunst/dunstrc
+sed -i 's/frame_color = "#aaaaaa"/frame_color = "#83a598"/g' $HOME/.config/dunst/dunstrc
+sed -i 's/background = "#285577"/background = "#83a598"/g' $HOME/.config/dunst/dunstrc
 
 # Configure GTK
 mkdir -p $HOME/.config/gtk-3.0/
