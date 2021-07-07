@@ -149,7 +149,7 @@ dunst &
 xset s 300 &
 
 # Screen locking
-xautolock -time 5 -locker "slock" -detectsleep -killtime 10 -killer "systemctl suspend" &
+xautolock -corners -+00 -cornerdelay 1 -time 5 -locker "slock" -detectsleep -killtime 10 -killer "systemctl suspend" &
 
 # Load keybindings
 xbindkeys &
