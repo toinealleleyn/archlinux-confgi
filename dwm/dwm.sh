@@ -9,7 +9,7 @@ sudo timedatectl set-timezone "Europe/Amsterdam"
 # Install required packages.
 sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr \
 	xbindkeys xorg-xbacklight libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra \
-	picom feh ttf-fira-code ttf-joypixels dunst pamixer base-devel git
+	picom feh ttf-fira-code ttf-fira-sans ttf-joypixels dunst pamixer base-devel git
 
 # Download and install an AUR helper.
 # Default: paru. Change variable AURHELPER for a different helper. 
@@ -58,7 +58,7 @@ tee $HOME/.config/gtk-3.0/settings.ini << EOF
 [Settings]
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita-dark
-gtk-font-name = Fira Code 10
+gtk-font-name = Fira Sans 10
 EOF
 
 # Set cursor theme to X11 default (i like it)
