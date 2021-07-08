@@ -5,7 +5,7 @@ echo -n "Enter your YouTube API key and press [ENTER]: "
 read APIKEY
 
 # Install dependencies.
-sudo pacman -S --needed --noconfirm jq >/dev/null 2>&1
+sudo pacman -S --needed --noconfirm mpv youtube-dl jq >/dev/null 2>&1
 
 # Copy to /usr/local/bin.
 sudo cp ytp /usr/local/bin/ytp
