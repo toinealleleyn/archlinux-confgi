@@ -1,5 +1,5 @@
 auto-reload yes
-browser "$BROWSER %u"
-macro m set browser "mpv %u >/dev/null 2>&1 &"; open-in-browser; set browser "$BROWSER %u"
-macro a set browser "notify-send \"🎵 $(youtube-dl --skip-download --get-title %u)\"; st -c \"st_float\" -g \"55x3-2-2\" mpv --no-video --keep-open=no %u 2>/dev/null &"; open-in-browser; set browser "$BROWSER %u"
-macro A set browser "notify-send \"Downloading '$(youtube-dl --skip-download --get-title %u)'\"; youtube-dl -x -f bestaudio/best --audio-format mp3 %u >/dev/null 2>&1 &"; open-in-browser; set browser "$BROWSER %u"
+browser "$BROWSER %u >/dev/null 2>&1 &"
+macro m set browser "mpv %u >/dev/null 2>&1 &"; open-in-browser; set browser "$BROWSER %u >/dev/null 2>&1 &"
+macro a set browser "notify-send \"🎵 $(youtube-dl --skip-download --get-title %u)\"; st -c \"st_float\" -g \"55x3-2-2\" mpv --no-video --keep-open=no %u 2>/dev/null &"; open-in-browser; set browser "$BROWSER %u >/dev/null 2>&1 &"
+macro A set browser "notify-send \"Downloading '$(youtube-dl --skip-download --get-title %u)'\"; youtube-dl -x -f bestaudio/best --audio-format mp3 %u >/dev/null 2>&1 &"; open-in-browser; set browser "$BROWSER %u >/dev/null 2>&1 &"
