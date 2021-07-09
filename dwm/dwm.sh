@@ -184,9 +184,8 @@ git clone https://github.com/toinealleleyn/dmenu &&
 	make &&
 	sudo make install
 cd $HOME/.src/
-git clone https://git.suckless.org/slock &&
+git clone https://github.com/toinealleleyn/slock &&
 	cd $HOME/.src/slock &&
-	sed -i 's/nogroup/nobody/g' config.def.h
 	make &&
 	sudo make install
 cd $HOME/.src/
