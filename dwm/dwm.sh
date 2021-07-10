@@ -67,6 +67,7 @@ EOF
 mkdir -p $HOME/.config/lf/
 tee $HOME/.config/lf/lfrc << EOF
 set icons
+set drawbox
 EOF
 
 # Set cursor theme to X11 default (i like it)
