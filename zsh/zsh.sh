@@ -16,3 +16,6 @@ cp zprofile $HOME/.config/zsh/.zprofile
 ln -s $HOME/.config/zsh/.zprofile $HOME/.zprofile >/dev/null 2>&1
 ln -s $HOME/.config/zsh/.zprofile $HOME/.xprofile >/dev/null 2>&1
 cp zshrc $HOME/.config/zsh/.zshrc
+
+# Add icon support for lf.
+cp lficons $HOME/.config/zsh/.lficons

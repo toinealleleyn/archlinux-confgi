@@ -33,7 +33,7 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 
 # Install symbols and patched libxft for color emoji support.
 # Needs to be manually accepted because of conflicts.
-paru -S --needed libxft-bgra ttf-symbola
+paru -S --needed libxft-bgra ttf-symbola nerd-fonts-fira-code lf-bin
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
@@ -62,6 +62,11 @@ tee $HOME/.config/gtk-3.0/settings.ini << EOF
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita-dark
 gtk-font-name = Fira Sans 10
+EOF
+
+mkdir -p $HOME/.config/lf/
+tee $HOME/.config/lf/lfrc << EOF
+set icons
 EOF
 
 # Set cursor theme to X11 default (i like it)

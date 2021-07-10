@@ -5,3 +5,4 @@
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
 export BROWSER="firefox"
+[ -f "$HOME/.config/zsh/.lficons" ] && source "$HOME/.config/zsh/.lficons"
