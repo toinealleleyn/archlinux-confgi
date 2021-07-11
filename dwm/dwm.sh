@@ -79,19 +79,18 @@ mkdir -p $HOME/.scripts/
 DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
 VOLUME=\$(pamixer --get-volume-human)
-if [ \$VOLUME == "muted" ]; then
+if [ "\$VOLUME" = "muted" ]; then
         VOLUMEICON="ﱝ"
 else
         VOLUMEICON=""
 fi
 xsetroot -name " \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
-
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
 DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
 VOLUME=\$(pamixer --get-volume-human)
-if [ \$VOLUME == "muted" ]; then
+if [ "\$VOLUME" = "muted" ]; then
         VOLUMEICON="ﱝ"
 else
         VOLUMEICON=""
