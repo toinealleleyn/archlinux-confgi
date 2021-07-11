@@ -80,11 +80,11 @@ DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
 VOLUME=\$(pamixer --get-volume-human)
 if [ \$VOLUME == "muted" ]; then
-        VOLUMEICON="🔈"
+        VOLUMEICON="ﱝ"
 else
-        VOLUMEICON="🔊"
+        VOLUMEICON=""
 fi
-xsetroot -name " \$VOLUMEICON \$VOLUME | 📅 \$DATE | 🕒 \$TIME"
+xsetroot -name " \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
 
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
@@ -92,12 +92,21 @@ DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
 VOLUME=\$(pamixer --get-volume-human)
 if [ \$VOLUME == "muted" ]; then
-        VOLUMEICON="🔈"
+        VOLUMEICON="ﱝ"
 else
-        VOLUMEICON="🔊"
+        VOLUMEICON=""
 fi
 BATTERY=\$(cat /sys/class/power_supply/BAT0/capacity)
-xsetroot -name " 🔋 \$BATTERY% | \$VOLUMEICON \$VOLUME | 📅 \$DATE | 🕒 \$TIME"
+if [ "\$BATTERY" -gt 75 ] && [ "\$BATTERY" -le 100 ]; then
+        BATTERYICON=""
+elif [ "\$BATTERY" -gt 50 ] && [ "\$BATTERY" -le 75 ]; then
+        BATTERYICON=""
+elif [ "\$BATTERY" -gt 25 ] && [ "\$BATTERY" -le 50 ]; then
+        BATTERYICON=""
+elif [ "\$BATTERY" -ge 0 ] && [ "\$BATTERY" -le 25 ]; then
+        BATTERYICON=""
+fi
+xsetroot -name " \$BATTERYICON \$BATTERY% | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
 EOF
 chmod +x $HOME/.scripts/statusbar.sh
 
