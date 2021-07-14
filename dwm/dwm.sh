@@ -68,6 +68,15 @@ mkdir -p $HOME/.config/lf/
 tee $HOME/.config/lf/lfrc << EOF
 set icons
 set drawbox
+set ifs "\n"
+
+# bindings
+cmd delete %{{
+    printf "Remove '\$fx' [y/n]? "
+    read ans
+    [ \$ans = "y" ] && rm -rf \$fx && printf "Removed '\$fx'."
+}}
+map x delete
 EOF
 
 # Set cursor theme to X11 default (i like it)
