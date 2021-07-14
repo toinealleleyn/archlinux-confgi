@@ -13,5 +13,4 @@ The scripts assume my personal clean install of Arch Linux, so use at your own r
 - `nvidiaprime.sh`: enables NVIDIA PRIME including RTD3 Power Management
 - `powersaving.sh`: installs and configures tlp, tlp-rdw (defaults) and powertop (--auto-tune)
 - `systemd-boot.sh`: creates pacman hook to update systemd-boot after the systemd package upgrades
-- `ytp`: install ytp version that works well with my dwm build
 - `zsh.sh`: installs zsh and deploys my zsh dotfiles
