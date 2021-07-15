@@ -33,7 +33,7 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 
 # Install symbols and patched libxft for color emoji support.
 # Needs to be manually accepted because of conflicts.
-paru -S --needed libxft-bgra ttf-symbola nerd-fonts-fira-code lf-bin
+paru -S --needed libxft-bgra nerd-fonts-fira-code lf-bin
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
