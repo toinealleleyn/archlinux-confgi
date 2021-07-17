@@ -105,7 +105,9 @@ else
         VOLUMEICON=""
 fi
 BATTERY=\$(cat /sys/class/power_supply/BAT0/capacity)
-if [ "\$BATTERY" -gt 75 ] && [ "\$BATTERY" -le 100 ]; then
+if [ \$(cat /sys/class/power_supply/BAT0/status) = "Charging" ]; then
+	BATTERYICON=""
+elif [ "\$BATTERY" -gt 75 ] && [ "\$BATTERY" -le 100 ]; then
         BATTERYICON=""
 elif [ "\$BATTERY" -gt 50 ] && [ "\$BATTERY" -le 75 ]; then
         BATTERYICON=""
