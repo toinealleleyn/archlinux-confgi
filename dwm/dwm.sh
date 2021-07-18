@@ -200,6 +200,7 @@ tee $HOME/.fehbg << EOF
 #!/bin/sh
 feh --no-fehbg --bg-scale "\$HOME/.local/share/backgrounds/buildings.jpg"
 EOF
+chmod +x $HOME/.fehbg
 
 # Get dwm, st, dmenu and slock
 mkdir $HOME/.src/
