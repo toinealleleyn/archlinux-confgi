@@ -20,6 +20,9 @@ SAVEHIST=2000
 HISTFILE=~/.cache/zsh/.history
 setopt appendhistory
 
+# Enable reverse search
+bindkey '^R' history-incremental-search-backward
+
 # Basic auto/tab complete.
 autoload -U compinit
 zstyle ':completion:*' menu select
