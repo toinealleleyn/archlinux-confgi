@@ -85,25 +85,41 @@ sudo sed -i 's/Inherits=Adwaita/Inherits=""/g' /usr/share/icons/default/index.th
 # Create statusbar
 mkdir -p $HOME/.scripts/
 [ -f /sys/class/power_supply/BAT0/capacity ] || tee $HOME/.scripts/statusbar.sh << EOF
+#!/bin/sh
+
+# Date and time
 DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
+
+# Volume
 VOLUME=\$(pamixer --get-volume-human)
 if [ "\$VOLUME" = "muted" ]; then
         VOLUMEICON="ﱝ"
 else
         VOLUMEICON=""
 fi
-xsetroot -name " \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
+
+# RSS
+RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+
+xsetroot -name "  \$RSS | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
 EOF
 [ -f /sys/class/power_supply/BAT0/capacity ] && tee $HOME/.scripts/statusbar.sh << EOF
+#!/bin/sh
+
+# Date and time
 DATE=\$(date +"%d-%m")
 TIME=\$(date +"%H:%M")
+
+# Volume
 VOLUME=\$(pamixer --get-volume-human)
 if [ "\$VOLUME" = "muted" ]; then
         VOLUMEICON="ﱝ"
 else
         VOLUMEICON=""
 fi
+
+# Battery
 BATTERY=\$(cat /sys/class/power_supply/BAT0/capacity)
 if [ \$(cat /sys/class/power_supply/BAT0/status) = "Charging" ]; then
 	BATTERYICON=""
@@ -116,7 +132,12 @@ elif [ "\$BATTERY" -gt 25 ] && [ "\$BATTERY" -le 50 ]; then
 elif [ "\$BATTERY" -ge 0 ] && [ "\$BATTERY" -le 25 ]; then
         BATTERYICON=""
 fi
-xsetroot -name " \$BATTERYICON \$BATTERY% | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
+
+# RSS
+RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+
+# Set statusbar
+xsetroot -name "  \$RSS | \$BATTERYICON \$BATTERY% | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
 EOF
 chmod +x $HOME/.scripts/statusbar.sh
 
@@ -148,6 +169,7 @@ tee $HOME/.xbindkeysrc << EOF
    XF86MonBrightnessDown
 EOF
 
+# Touchpad settings
 sudo tee /etc/X11/xorg.conf.d/30-touchpad.conf << EOF
 Section "InputClass"
         Identifier "libinput touchpad catchall"
@@ -159,6 +181,17 @@ Section "InputClass"
 	Option "NaturalScrolling" "true"
 	Option "ScrollMethod" "twofinger"
 	Option "ScrollPixelDistance" "30"
+EndSection
+EOF
+
+# Mouse settings
+sudo tee /etc/X11/xorg.conf.d/30-touchpad.conf << EOF
+Section "InputClass"
+        Identifier "My Mouse"
+        Driver "libinput"
+        MatchIsPointer "yes"
+        Option "AccelProfile" "flat"
+        Option "TransformationMatrix" "1 0 0 0 1 0 0 0 1"
 EndSection
 EOF
 
