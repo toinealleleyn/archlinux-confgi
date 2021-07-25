@@ -1,4 +1,4 @@
-auto-reload yes
+max-items 100
 highlight feedlist "---.*---" yellow default bold
 highlight feedlist ".*0/0.." default default invis
 browser "$BROWSER %u >/dev/null 2>&1 &"

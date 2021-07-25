@@ -12,3 +12,11 @@ sudo pacman -S --needed --noconfirm youtube-dl mpv >/dev/null 2>&1
 mkdir -p $HOME/.newsboat
 cp config $HOME/.newsboat/config
 cp urls $HOME/.newsboat/urls
+mkdir -p $HOME/.config/systemd/user
+cp systemd.service $HOME/.config/systemd/user/newsboat.service
+cp systemd.timer $HOME/.config/systemd/user/newsboat.timer
+
+# Enable service
+systemctl --user daemon-reload
+systemctl --user enable newsboat.service --now
+systemctl --user enable newsboat.timer --now
