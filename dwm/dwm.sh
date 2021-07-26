@@ -227,11 +227,11 @@ exec dwm
 EOF
 
 # Configure wallpaper
-sudo mkdir -p $HOME/.local/share/backgrounds/
-sudo cp wallpapers/buildings.jpg $HOME/.local/share/backgrounds/
+mkdir -p $HOME/.local/share/backgrounds/
+cp wallpapers/mountains.jpg $HOME/.local/share/backgrounds/
 tee $HOME/.fehbg << EOF
 #!/bin/sh
-feh --no-fehbg --bg-scale "\$HOME/.local/share/backgrounds/buildings.jpg"
+feh --no-fehbg --bg-scale "\$HOME/.local/share/backgrounds/mountains.jpg"
 EOF
 chmod +x $HOME/.fehbg
 
