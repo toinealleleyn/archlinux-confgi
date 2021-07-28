@@ -100,7 +100,8 @@ else
 fi
 
 # RSS
-RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+pgrep newsboat || RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+pgrep newsboat && RSS="@"
 
 xsetroot -name "  \$RSS | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
 EOF
@@ -134,7 +135,8 @@ elif [ "\$BATTERY" -ge 0 ] && [ "\$BATTERY" -le 25 ]; then
 fi
 
 # RSS
-RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+pgrep newsboat || RSS=\$(newsboat -x print-unread | awk '{print \$1}')
+pgrep newsboat && RSS="@"
 
 # Set statusbar
 xsetroot -name "  \$RSS | \$BATTERYICON \$BATTERY% | \$VOLUMEICON \$VOLUME |  \$DATE |  \$TIME"
