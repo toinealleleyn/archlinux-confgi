@@ -187,7 +187,7 @@ EndSection
 EOF
 
 # Mouse settings
-sudo tee /etc/X11/xorg.conf.d/30-touchpad.conf << EOF
+sudo tee /etc/X11/xorg.conf.d/20-mouse.conf << EOF
 Section "InputClass"
         Identifier "My Mouse"
         Driver "libinput"
