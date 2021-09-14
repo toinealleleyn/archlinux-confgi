@@ -230,10 +230,10 @@ EOF
 
 # Configure wallpaper
 mkdir -p $HOME/.local/share/backgrounds/
-cp wallpapers/mountains.jpg $HOME/.local/share/backgrounds/
+cp wallpapers/mountains-draw.jpg $HOME/.local/share/backgrounds/
 tee $HOME/.fehbg << EOF
 #!/bin/sh
-feh --no-fehbg --bg-scale "\$HOME/.local/share/backgrounds/mountains.jpg"
+feh --no-fehbg --bg-scale "\$HOME/.local/share/backgrounds/mountains-draw.jpg"
 EOF
 chmod +x $HOME/.fehbg
 
