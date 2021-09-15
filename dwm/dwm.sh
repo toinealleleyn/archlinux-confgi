@@ -9,7 +9,7 @@ sudo timedatectl set-timezone "Europe/Amsterdam"
 # Install required packages.
 sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr \
 	xbindkeys xorg-xbacklight libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra \
-	picom feh ttf-fira-code ttf-fira-sans ttf-joypixels dunst pamixer base-devel git
+	picom feh ttf-jetbrains-mono ttf-joypixels dunst pamixer base-devel git
 
 # Download and install an AUR helper.
 # Default: paru. Change variable AURHELPER for a different helper. 
@@ -33,7 +33,7 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 
 # Install symbols and patched libxft for color emoji support.
 # Needs to be manually accepted because of conflicts.
-paru -S --needed libxft-bgra nerd-fonts-fira-code lf-bin
+paru -S --needed libxft-bgra-git lf-bin nerd-fonts-jetbrains-mono otf-san-francisco
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
@@ -50,7 +50,7 @@ sed -i 's/^frame-opacity = 0.7/frame-opacity = 1.0/g' $HOME/.config/picom/picom.
 # Configure dunst
 mkdir -p $HOME/.config/dunst/
 cp /etc/dunst/dunstrc $HOME/.config/dunst/dunstrc
-sed -i 's/Monospace 8/Fira Code 10/g' $HOME/.config/dunst/dunstrc
+sed -i 's/Monospace 8/JetBrains Mono 10/g' $HOME/.config/dunst/dunstrc
 sed -i 's/geometry = "300x5-30+20"/geometry = "300x5-5+25"/g' $HOME/.config/dunst/dunstrc
 sed -i 's/frame_color = "#aaaaaa"/frame_color = "#83a598"/g' $HOME/.config/dunst/dunstrc
 sed -i 's/background = "#285577"/background = "#83a598"/g' $HOME/.config/dunst/dunstrc
@@ -61,7 +61,7 @@ tee $HOME/.config/gtk-3.0/settings.ini << EOF
 [Settings]
 gtk-icon-theme-name = Adwaita
 gtk-theme-name = Adwaita-dark
-gtk-font-name = Fira Sans 10
+gtk-font-name = SF Pro Text 10
 EOF
 
 mkdir -p $HOME/.config/lf/
