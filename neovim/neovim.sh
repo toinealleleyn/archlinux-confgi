@@ -32,6 +32,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 call plug#end()
 EOF
 
+tee $HOME/.config/nvim/relativenumber.vim << EOF
+set relativenumber
+hi LineNr ctermfg=8
+EOF
+
 # Create init.vim file
 echo "source \$HOME/.config/nvim/vim-plug/plugins.vim" > $HOME/.config/nvim/init.vim
-echo "source \$HOME/.config/nvim/relativenumbers.vim" >> $HOME/.config/nvim/init.vim
+echo "source \$HOME/.config/nvim/relativenumber.vim" >> $HOME/.config/nvim/init.vim

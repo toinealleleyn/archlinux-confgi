@@ -9,7 +9,8 @@ sudo timedatectl set-timezone "Europe/Amsterdam"
 # Install required packages.
 sudo pacman -S --noconfirm --needed libx11 libxinerama xorg-server xorg-xinit xautolock xorg-xset xorg-xsetroot xorg-xrandr \
 	xbindkeys xorg-xbacklight libxkbcommon xf86-input-libinput pipewire pipewire-pulse pulsemixer gnome-themes-extra \
-	picom feh ttf-jetbrains-mono ttf-joypixels dunst pamixer base-devel git thunar thunar-archive-plugin xarchiver zip unzip unrar p7zip mupdf
+	picom feh ttf-jetbrains-mono ttf-joypixels dunst pamixer base-devel git thunar thunar-archive-plugin xarchiver zip unzip \
+	unrar p7zip mupdf rofi rofi-emoji xsel
 
 # Download and install an AUR helper.
 # Default: paru. Change variable AURHELPER for a different helper. 
@@ -33,7 +34,7 @@ grep "MAKEFLAGS=\"-j$(nproc)\"" /etc/makepkg.conf >/dev/null 2>&1 || \
 
 # Install symbols and patched libxft for color emoji support.
 # Needs to be manually accepted because of conflicts.
-paru -S --needed libxft-bgra-git lf-bin nerd-fonts-jetbrains-mono otf-san-francisco
+paru -S --needed libxft-bgra-git lf-bin nerd-fonts-jetbrains-mono otf-san-francisco adwaita-qt
 
 # Set keyboard layout to US Intl with dead keys.
 sudo localectl set-x11-keymap us "" intl
