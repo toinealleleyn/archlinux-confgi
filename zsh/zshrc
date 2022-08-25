@@ -23,6 +23,9 @@ setopt appendhistory
 # Enable reverse search
 bindkey '^R' history-incremental-search-backward
 
+# Insert last word
+bindkey '^[.' insert-last-word
+
 # Basic auto/tab complete.
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -34,8 +37,6 @@ _comp_options+=(globdots)
 alias sudo='sudo '
 alias ls="ls --color=auto --group-directories-first"
 alias vim="nvim"
-alias yta="youtube-dl -x -f bestaudio/best"
-alias webcam="mpv --osc=no --demuxer-lavf-o-set=input_format=mjpeg --profile=low-latency --untimed av://v4l2:/dev/video0 >/dev/null 2>&1 &!"
 
 # Syntax highlighting.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

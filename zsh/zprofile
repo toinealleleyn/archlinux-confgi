@@ -4,8 +4,7 @@
 
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
-export BROWSER="qutebrowser"
-export FILEMANAGER="thunar"
-export QT_STYLE_OVERRIDE="adwaita-dark"
-
-[ -f "$HOME/.config/zsh/.lficons" ] && source "$HOME/.config/zsh/.lficons"
+export BROWSER="firefox"
+export FILEMANAGER="nautilus"
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORMTHEME=gnome

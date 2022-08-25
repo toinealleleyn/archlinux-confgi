@@ -4,7 +4,7 @@
 # tlp, tlp-rdw and powertop
 
 # Install packages.
-sudo pacman -S --needed --noconfirm tlp tlp-rdw powertop
+sudo pacman -S --needed --noconfirm tlp tlp-rdw
 
 # Configure the services.
 sudo systemctl enable tlp.service
