@@ -1,8 +1,0 @@
-[Unit]
-Description=Update newsboat feeds
-
-[Service]
-ExecStart=/usr/bin/newsboat -x reload
-
-[Install]
-WantedBy=default.target
