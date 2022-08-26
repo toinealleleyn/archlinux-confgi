@@ -15,3 +15,6 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
 
 # Allow wayland with Nvidia in GDM.
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+# File thumbnails.
+sudo pacman -S --needed --noconfirm tumbler ffmpegthumbnailer webp-pixbuf-loader poppler-glib gnome-epub-thumbnailer libgsf
