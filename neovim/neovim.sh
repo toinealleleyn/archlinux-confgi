@@ -29,6 +29,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
 
+    " Status bar (vim-airline)
+    Plug 'vim-airline/vim-airline'		
+
 call plug#end()
 EOF
 
