@@ -29,3 +29,6 @@ sudo tee /etc/modprobe.d/nvidia.conf << EOF
 blacklist nouveau
 options nvidia "NVreg_DynamicPowerManagement=$PMSETTING"
 EOF
+
+# Enable nvidia-resume for faster resume after sleep.
+sudo systemctl enable --now nvidia-resume.service

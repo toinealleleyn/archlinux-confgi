@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install extra packages.
-sudo pacman -S --needed --noconfirm iio-sensor-proxy qgnomeplatform-qt{5,6}
+sudo pacman -S --needed --noconfirm iio-sensor-proxy qgnomeplatform-qt{5,6} noto-fonts-cjk
 
 # Libadwaita theme for gtk3 apps.
 if command -v paru
