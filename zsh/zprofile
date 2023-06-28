@@ -5,6 +5,5 @@
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
 export BROWSER="firefox"
-export FILEMANAGER="nautilus"
+export FILEMANAGER="dolphin"
 export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORMTHEME=gnome

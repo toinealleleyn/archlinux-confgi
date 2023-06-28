@@ -38,5 +38,18 @@ alias sudo='sudo '
 alias ls="ls --color=auto --group-directories-first"
 alias vim="nvim"
 
+# Functions
+# Download YouTube audio including square thumbnail
+yta(){
+        yt-dlp \
+                -f 'ba' \
+                -x \
+                --audio-format mp3 \
+                --embed-thumbnail \
+                --convert-thumb png \
+                --ppa "ThumbnailsConvertor+ffmpeg_o:-c:v png -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\"" \
+        $1 
+}
+
 # Syntax highlighting.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

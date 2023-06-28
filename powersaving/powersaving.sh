@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Script to configure powersaving with default settings.
-# tlp, tlp-rdw and powertop
+# tlp, tlp-rdw
 
 # Install packages.
 sudo pacman -S --needed --noconfirm tlp tlp-rdw
