@@ -33,6 +33,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
+# Let terminal application handle window title.
+DISABLE_AUTO_TITLE="true"
+
 # Aliases
 alias sudo='sudo '
 alias ls="ls --color=auto --group-directories-first"
