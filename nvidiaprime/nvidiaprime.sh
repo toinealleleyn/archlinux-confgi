@@ -32,3 +32,6 @@ EOF
 
 # Enable nvidia-resume for faster resume after sleep.
 sudo systemctl enable --now nvidia-resume.service
+# Enable nvidia-persistenced.service to avoid the kernel tearing down the device state
+# whenever the NVIDIA device resources are no longer in use.
+sudo systemctl enable --now nvidia-persistenced.service
