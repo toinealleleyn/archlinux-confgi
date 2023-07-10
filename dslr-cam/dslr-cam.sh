@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Script to enable the use of a dslr camera as webcam.
+# Script to enable the use of a dslr camera as webcam using USB.
+# Using USB will result in low resolution and a noticeable delay, so a HDMI capture card is preferred over this.
 
 # Install required packages.
 echo "[#] Installing packages." 
