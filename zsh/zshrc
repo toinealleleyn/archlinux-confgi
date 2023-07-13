@@ -42,7 +42,6 @@ alias ls="ls --color=auto --group-directories-first"
 alias vim="nvim"
 alias wgu="sudo wg-quick up"
 alias wgd="sudo wg-quick down"
-alias dslr-cam="gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video4"
 
 # Functions
 # Download YouTube audio including square thumbnail
@@ -54,7 +53,7 @@ yta(){
                 --embed-thumbnail \
                 --convert-thumb png \
                 --ppa "ThumbnailsConvertor+ffmpeg_o:-c:v png -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\"" \
-        $1 
+                $1 
 }
 
 # Syntax highlighting.
