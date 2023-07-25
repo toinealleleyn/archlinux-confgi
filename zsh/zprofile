@@ -6,4 +6,4 @@ export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export FILEMANAGER="dolphin"
-export MOZ_ENABLE_WAYLAND=1
+[ "$XDG_SESSION_TYPE" == "wayland" ] && export MOZ_ENABLE_WAYLAND=1 || export MOZ_USE_XINPUT2=1

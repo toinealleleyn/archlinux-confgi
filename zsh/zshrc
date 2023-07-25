@@ -39,6 +39,7 @@ DISABLE_AUTO_TITLE="true"
 # Aliases
 alias sudo='sudo '
 alias ls="ls --color=auto --group-directories-first"
+alias grep="grep --color=auto"
 alias vim="nvim"
 alias wgu="sudo wg-quick up"
 alias wgd="sudo wg-quick down"
