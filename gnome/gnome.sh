@@ -22,3 +22,7 @@ curl -sLo "adw-gtk3.tar.xz"  $(curl -s https://api.github.com/repos/lassekongo83
 tar -xf adw-gtk3.tar.xz -C ~/.local/share/themes/
 rm -rf adw-gtk3.tar.xz
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+
+# Thumbnail previews
+sudo pacman -S --needed --noconfirm tumbler ffmpegthumbnailer poppler-glib webp-pixbuf-loader
+rm -rf ~/.cache/thumbnails
