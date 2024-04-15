@@ -6,7 +6,7 @@ ls /boot/loader/entries | grep arch.conf || (echo "Please rename boot entry to '
 # Install plymouth
 sudo pacman -S --needed --noconfirm plymouth
 
-# Add amgpu modules to initrd
+# Add amdgpu modules to initrd
 sudo sed -i 's/MODULES=()/MODULES=(amdgpu)/g' /etc/mkinitcpio.conf
 # Add kms and plymooth hooks to initrd
 sudo sed -i 's/block encrypt/block kms plymouth encrypt/g' /etc/mkinitcpio.conf
