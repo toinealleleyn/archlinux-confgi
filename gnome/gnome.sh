@@ -9,6 +9,9 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+intl')]"
 # Install flatpak
 sudo pacman -S --needed --noconfirm flatpak
 
+# Install fwupd
+sudo pacman -S --needed --noconfirm fwupd
+
 # Enable bluetooth and change default behaviour to "off"
 sudo sed -i 's/^#AutoEnable=true/AutoEnable=false/g' /etc/bluetooth/main.conf
 sudo systemctl enable bluetooth --now
