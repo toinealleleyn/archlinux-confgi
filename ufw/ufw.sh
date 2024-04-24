@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Install ufw.
-sudo pacman -S --needed --noconfirm ufw
+# Install ufw and replace iptables with nftables
+sudo pacman -S --needed --noconfirm ufw iptables-nft
 
 # Default deny, and enable
 sudo ufw default deny
